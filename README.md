@@ -5,6 +5,9 @@ OSX Sierra titlebar buttons.
 ![Screenshot](Screenshot.png)
 
 ## Install
+**Installing from repositories will install the [original version from ishovkun](https://github.com/ishovkun/SierraBreeze)**.
+
+If you wish to install this version with modifications, you'll have to build from source.
 
 ### Debian/Ubuntu
 
@@ -20,7 +23,7 @@ sudo apt install sierrabreeze
 
 SierraBreeze can also be installed from the [AUR](https://aur.archlinux.org/packages/sierrabreeze-kwin-decoration-git/) using
 ``` shell
-yaourt sierrabreeze-kwin-decoration-git
+yay -S sierrabreeze-kwin-decoration-git
 ```
 
 ### OpenSUSE
@@ -57,7 +60,7 @@ sudo dnf install "cmake(Qt5Core)" "cmake(Qt5Gui)" "cmake(Qt5DBus)" "cmake(Qt5X11
 
 In order to install the theme and add it to your decorations do the following:
 ``` shell
-git clone https://github.com/ishovkun/SierraBreeze
+git clone https://github.com/dillionnason/SierraBreeze
 cd SierraBreeze
 mkdir build
 cd build
@@ -72,6 +75,8 @@ That is it! Your new decoration theme should appear in
 *Settings &rarr; Application Style &rarr; Window Decorations*.
 
 ## Acknowledgments:
+- The creator of Sierra Breeze ishovkun
+https://github.com/ishovkun
 - The authors of Breeze window decorations Martin Gräßlin and Hugo Pereira Da Costa
 - Andrey Orst, the author of Breezemite Aurorae window decoration
 https://github.com/andreyorst/Breezemite
