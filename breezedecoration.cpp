@@ -110,9 +110,9 @@ namespace SierraBreeze
 
         auto c = client().data();
 
-        if ( isKonsoleWindow(c) ) {
-            return m_KonsoleTitleBarColor;
-        }
+        //if ( isKonsoleWindow(c) ) {
+        //    return m_KonsoleTitleBarColor;
+        //}
 
         if( hideTitleBar() ) return c->color( ColorGroup::Inactive, ColorRole::TitleBar );
         else if( m_animation->state() == QPropertyAnimation::Running )
@@ -147,24 +147,12 @@ namespace SierraBreeze
         auto c = client().data();
         if( m_animation->state() == QPropertyAnimation::Running )
         {
-            if ( isKonsoleWindow(c) ) {
-                return KColorUtils::mix(
-                        m_KonsoleTitleBarTextColorInactive,
-                        m_KonsoleTitleBarTextColorActive,
-                        m_opacity );
-            }
-            else {
-                return KColorUtils::mix(
-                        c->color( ColorGroup::Inactive, ColorRole::Foreground ),
-                        c->color( ColorGroup::Active, ColorRole::Foreground ),
-                        m_opacity );
-            }
+            return KColorUtils::mix(
+                    c->color( ColorGroup::Inactive, ColorRole::Foreground ),
+                    c->color( ColorGroup::Active, ColorRole::Foreground ),
+                    m_opacity );
         } else {
-            if ( isKonsoleWindow(c) ) {
-                return  c->isActive() ? m_KonsoleTitleBarTextColorActive : m_KonsoleTitleBarTextColorInactive;
-            } else {
-                return  c->color( c->isActive() ? ColorGroup::Active : ColorGroup::Inactive, ColorRole::Foreground );
-            }
+            return  c->color( c->isActive() ? ColorGroup::Active : ColorGroup::Inactive, ColorRole::Foreground );
         }
     }
 
@@ -385,7 +373,7 @@ namespace SierraBreeze
         createShadow();
 
         // konsole title bar color and transparency
-        readKonsoleProfileColor();
+        //readKonsoleProfileColor();
 
         // size grip
         if( hasNoBorders() && m_internalSettings->drawSizeGrip() ) createSizeGrip();
@@ -441,7 +429,7 @@ namespace SierraBreeze
     }
 
     //________________________________________________________________
-void Decoration::createButtons()
+    void Decoration::createButtons()
     {
         m_leftButtons = new KDecoration2::DecorationButtonGroup(KDecoration2::DecorationButtonGroup::Position::Left, this, &Button::create);
         m_rightButtons = new KDecoration2::DecorationButtonGroup(KDecoration2::DecorationButtonGroup::Position::Right, this, &Button::create);
@@ -540,11 +528,7 @@ void Decoration::createButtons()
             painter->setRenderHint(QPainter::Antialiasing);
             painter->setPen(Qt::NoPen);
 
-            if ( isKonsoleWindow(c) ) {
-                painter->setBrush( m_KonsoleTitleBarColor );
-            } else {
-                painter->setBrush( c->color( c->isActive() ? ColorGroup::Active : ColorGroup::Inactive, ColorRole::Frame ) );
-            }
+            painter->setBrush( c->color( c->isActive() ? ColorGroup::Active : ColorGroup::Inactive, ColorRole::Frame ) );
 
             // clip away the top part
             if( !hideTitleBar() ) painter->setClipRect(0, borderTop(), size().width(), size().height() - borderTop(), Qt::IntersectClip);
@@ -586,7 +570,7 @@ void Decoration::createButtons()
         painter->setPen(Qt::NoPen);
 
         // render a linear gradient on title area
-        if ( c->isActive() && m_internalSettings->drawBackgroundGradient() && !isKonsoleWindow(c) )
+        if ( c->isActive() && m_internalSettings->drawBackgroundGradient() )
         {
 
             // TODO Review this. Initialize titleBarColor based on user's choise.
@@ -596,18 +580,13 @@ void Decoration::createButtons()
             gradient.setColorAt(0.8, titleBarColor);
             painter->setBrush(gradient);
 
-        } else if ( !isKonsoleWindow(c) ) {
+        } else {
 
             // TODO Review this. Initialize titleBarColor based on user's choise.
             // I needed another else if because the window might not be active or has drawBackgroundGradient but
             // I still need to take care the konsole case.
             const QColor titleBarColor = (matchColorForTitleBar()  ? matchedTitleBarColor : this->titleBarColor() );
             painter->setBrush(titleBarColor);
-
-        } else {
-
-            QColor titleBarColor = this->titleBarColor();
-            painter->setBrush( titleBarColor );
 
         }
 
