@@ -1,11 +1,16 @@
 # SierraBreeze
 
-Sierra Breeze is a fork of Breeze Window decoration that aims to mimic the
-OSX Sierra titlebar buttons.
+This is a fork of ishovkun's [Sierra Breeze](https://github.com/ishovkun/SierraBreeze) that adds some personal modifications.
 ![Screenshot](Screenshot.png)
-This example is also using a [LightlyShaders](https://github.com/a-parhom/LightlyShaders) fork by [a-parhom](https://github.com/a-parhom) to get a more OSX like appearance. 
+This example is also using a [LightlyShaders](https://github.com/a-parhom/LightlyShaders) fork by [a-parhom](https://github.com/a-parhom) and vinceliuice's [White Sur Firefox Theme](https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox) to get a more OSX like appearance. 
+
+## Currently Planned Features
+
+1. Optional Konsole color matching (fully removed for the time being)
+2. Similar button options to [Sierra Breeze Enhanced](https://github.com/kupiqu/SierraBreezeEnhanced), such as padding, spacing, etc.
 
 ## Install
+
 **Installing from repositories will install the [original version from ishovkun](https://github.com/ishovkun/SierraBreeze)**.
 
 If you wish to install this version with modifications, you'll have to build from source.
