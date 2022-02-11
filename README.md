@@ -75,9 +75,9 @@ That is it! Your new decoration theme should appear in
 *Settings &rarr; Application Style &rarr; Window Decorations*.
 
 ## Acknowledgments:
-- The creator of Sierra Breeze ishovkun
+- ishovkun, the creator of Sierra Breeze
 https://github.com/ishovkun
-- The authors of Breeze window decorations Martin Gräßlin and Hugo Pereira Da Costa
+- Martin Gräßlin and Hugo Pereira Da Costa, the authors of Breeze window decorations 
 - Andrey Orst, the author of Breezemite Aurorae window decoration
 https://github.com/andreyorst/Breezemite
 - Chris Holland for his blog about patching Breeze decorations
